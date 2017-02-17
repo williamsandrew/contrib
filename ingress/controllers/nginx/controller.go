@@ -633,6 +633,9 @@ func (lbc *loadBalancerController) getStreamServices(data map[string]string, pro
 		})
 	}
 
+	// Sort by "Path" which in our case is just the port number as a string
+	sort.Sort(nginx.LocationByPath(svcs))
+
 	return svcs
 }
 
